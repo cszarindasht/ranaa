@@ -967,6 +967,134 @@
                 gap: 1rem;
             }
         }
+
+        /* Notification Bubble Styles */
+        .chatbot-notification {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            z-index: 1001;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 16px 20px;
+            border-radius: 20px;
+            max-width: 280px;
+            box-shadow: 0 8px 32px rgba(2, 136, 209, 0.3);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            font-size: 14px;
+            line-height: 1.4;
+            text-align: center;
+            position: relative;
+        }
+
+        .chatbot-notification::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 20px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid var(--primary-color);
+        }
+
+        .chatbot-notification.show {
+            transform: translateY(0);
+            opacity: 1;
+            animation: bounceIn 0.6s ease-out;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3) translateY(20px); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9) translateY(-5px); }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+
+        .ai-button-section {
+            background: linear-gradient(135deg, var(--secondary-color), #FFFFFF);
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .dark-mode .ai-button-section {
+            background: linear-gradient(135deg, #455A64, var(--dark-bg));
+        }
+
+        .ai-button {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 18px 36px;
+            border-radius: 16px;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 25px rgba(2, 136, 209, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ai-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(2, 136, 209, 0.3);
+        }
+
+        /* Adjusted styles for reports */
+        #reports .glass-card {
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Reduced spacing between sections */
+        #resources + #ai-button-section {
+            margin-top: 1rem;
+        }
+
+        #ai-button-section + #reports {
+            margin-top: 1rem;
+        }
+
+        #reports {
+            padding: 1rem 0;
+        }
+
+        .video-link {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            padding: 12px 16px;
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .video-link:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(-5px);
+        }
+
+        /* Reduced margins for resources section */
+        .mb-8 {
+            margin-bottom: 1rem !important;
+        }
+
+        .py-12 {
+            padding-top: 1.5rem !important;
+            padding-bottom: 1.5rem !important;
+        }
+
+        .gap-6 {
+            gap: 1rem !important;
+        }
     </style>
 </head>
 <body class="light-mode transition-all duration-300">
@@ -987,7 +1115,7 @@
                             <img src="your-logo.png" alt="لوگو گروه کامپیوتر" class="w-14 h-14 object-contain" />
                         </div>
                         <div>
-                            <h1 class="text-2xl font-bold text-white" style="font-family: 'Vazirmatn', sans-serif; font-weight: 700;">فن‌آموز زرین</h1>
+                            <h1 class="text-2xl font-bold text-white" style="font-family: 'Vazirmatn', sans-serif; font-weight: 700;">گروه کامپیوتر شهرستان زرین‌دشت</h1>
                             <p class="text-sm text-gray-200" style="font-family: 'Vazirmatn', sans-serif; font-weight: 300;">استان فارس زرین‌دشت</p>
                         </div>
                     </div>
@@ -1019,11 +1147,10 @@
                            onmouseover="this.style.color='var(--accent-green)'; this.style.textShadow='0 2px 8px rgba(0, 121, 107, 0.5)'" 
                            onmouseout="this.style.color='white'; this.style.textShadow='none'" 
                            onclick="document.getElementById('resources').scrollIntoView({behavior: 'smooth'})">منابع</a>
-                        <a href="#ai" class="text-white hover:text-accent-green transition-all duration-300 font-semibold" 
+                        <a href="ai.html" class="text-white hover:text-accent-green transition-all duration-300 font-semibold" 
                            style="font-family: 'Vazirmatn', sans-serif; color: white;" 
                            onmouseover="this.style.color='var(--accent-green)'; this.style.textShadow='0 2px 8px rgba(0, 121, 107, 0.5)'" 
-                           onmouseout="this.style.color='white'; this.style.textShadow='none'" 
-                           onclick="document.getElementById('ai').scrollIntoView({behavior: 'smooth'})">هوش مصنوعی</a>
+                           onmouseout="this.style.color='white'; this.style.textShadow='none'">هوش مصنوعی</a>
                         <a href="#articles" class="text-white hover:text-accent-green transition-all duration-300 font-semibold" 
                            style="font-family: 'Vazirmatn', sans-serif; color: white;" 
                            onmouseover="this.style.color='var(--accent-green)'; this.style.textShadow='0 2px 8px rgba(0, 121, 107, 0.5)'" 
@@ -1060,8 +1187,8 @@
                        style="font-family: 'Vazirmatn', sans-serif;" onclick="document.getElementById('team').scrollIntoView({behavior: 'smooth'}); toggleMobileMenu()">اعضای گروه</a>
                     <a href="#resources" class="block text-white hover:text-accent-green transition-colors font-semibold" 
                        style="font-family: 'Vazirmatn', sans-serif;" onclick="document.getElementById('resources').scrollIntoView({behavior: 'smooth'}); toggleMobileMenu()">منابع</a>
-                    <a href="#ai" class="block text-white hover:text-accent-green transition-colors font-semibold" 
-                       style="font-family: 'Vazirmatn', sans-serif;" onclick="document.getElementById('ai').scrollIntoView({behavior: 'smooth'}); toggleMobileMenu()">هوش مصنوعی</a>
+                    <a href="ai.html" class="block text-white hover:text-accent-green transition-colors font-semibold" 
+                       style="font-family: 'Vazirmatn', sans-serif;" onclick="toggleMobileMenu()">هوش مصنوعی</a>
                     <a href="#articles" class="block text-white hover:text-accent-green transition-colors font-semibold" 
                        style="font-family: 'Vazirmatn', sans-serif;" onclick="document.getElementById('articles').scrollIntoView({behavior: 'smooth'}); toggleMobileMenu()">مطالب آموزشی</a>
                     <a href="#reports" class="block text-white hover:text-accent-green transition-colors font-semibold" 
@@ -1075,7 +1202,7 @@
     <section id="hero" class="hero-gradient text-white py-24 mx-4 rounded-3xl mb-12 relative">
         <div class="parallax-bg"></div>
         <div class="container mx-auto px-6 text-center relative z-10">
-            <h2 class="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">مرکز تخصصی آموزش فنی‌حرفه‌ای</h2>
+            <h2 class="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">گروه کامپیوتر شهرستان زرین دشت </h2>
             <h3 class="text-2xl md:text-3xl mb-4 animate-fade-in-delay-1">برای آینده‌سازان فناوری</h3>
             <h4 class="text-xl md:text-2xl mb-8 animate-fade-in-delay-2">دسترسی هوشمند</h4>
             
@@ -1084,27 +1211,12 @@
                 <img src="your-logo.png" alt="لوگو گروه کامپیوتر" class="w-36 h-36 object-contain" />
             </div>
             
-            <h5 class="text-xl md:text-2xl mb-8 animate-fade-in-delay-3">گروه کامپیوتر شهرستان زرین‌دشت</h5>
+            <h5 class="text-xl md:text-2xl mb-8 animate-fade-in-delay-3"></h5>
             
             <p class="text-lg md:text-xl mb-8 max-w-4xl mx-auto leading-relaxed opacity-90 animate-fade-in-delay-4">
                 این وب‌سایت برای دسترسی آسان هنرآموزان، هنرجویان و مسئولان به محتوای دروس فنی‌وحرفه‌ای و کاردانش طراحی شده است.
-            </p>
-            
-            <p class="text-md md:text-lg mb-10 max-w-4xl mx-auto leading-relaxed opacity-80 animate-fade-in-delay-5">
-                این سایت به همت اساتید و اعضای گروه فن‌آموز زرین نوشته شده و مخصوص دانش‌آموزان عزیز و گرامی مدارس استان فارس زرین‌دشت است.
-            </p>
-            
-            <div class="flex justify-center space-x-6 space-x-reverse animate-fade-in-delay-6">
-                <button onclick="document.getElementById('fields').scrollIntoView({behavior: 'smooth'})" 
-                        class="btn-primary">
-                    <i class="fas fa-book-open ml-2"></i>
-                    مشاهده رشته‌ها
-                </button>
-                <button onclick="document.getElementById('schools').scrollIntoView({behavior: 'smooth'})" 
-                        class="btn-secondary">
-                    <i class="fas fa-school ml-2"></i>
-                    هنرستان‌ها
-                </button>
+           </p>
+             </button>
             </div>
         </div>
     </section>
@@ -1423,19 +1535,19 @@
         </div>
     </section>
 
-    <!-- Software Resources Section (Added from first code) -->
-    <section id="resources" class="py-20 px-4 bg-white/5 dark:bg-slate-900/50">
+    <!-- Software Resources Section -->
+    <section id="resources" class="py-12 px-4 bg-white/5 dark:bg-slate-900/50">
         <div class="container mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-16 text-primary dark:text-white">
-                <i className="fas fa-download ml-3"></i>
-                نرم‌افزارهای مورد نیاز
+            <h2 class="text-4xl font-bold text-center mb-8 text-primary dark:text-white">
+                <i class="fas fa-download ml-3"></i>
+                نرم‌افزارهای مورد نیاز و منابع آموزشی
             </h2>
 
             <!-- نرم‌افزارهای پایه ۱۰ -->
-            <div class="mb-12">
-                <h3 class="text-2xl font-bold mb-8 text-accent">نرم‌افزارهای پایه ۱۰</h3>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <a href="https://www.microsoft.com/en-us/software-download/windows11" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-6 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
+            <div class="mb-4">
+                <h3 class="text-2xl font-bold mb-4 text-accent">نرم‌افزارهای پایه ۱۰</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+                    <a href="https://www.microsoft.com/en-us/software-download/windows11" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-4 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="fab fa-windows text-white text-xl"></i>
@@ -1448,8 +1560,13 @@
                                 </span>
                             </div>
                         </div>
+                        <h5 class="font-semibold mb-2 mt-2">آموزش‌های ویدیویی (از آپارات)</h5>
+                        <a href="https://www.aparat.com/v/spw1y64" target="_blank" rel="noopener noreferrer" class="video-link">
+                            <i class="fas fa-video ml-2"></i>
+                            کامل‌ترین آموزش نصب ویندوز 10 و 11 در 7 دقیقه
+                        </a>
                     </a>
-                    <a href="https://www.microsoft.com/en-us/microsoft-365/try" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-6 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
+                    <a href="https://www.microsoft.com/en-us/microsoft-365/try" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-4 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="fas fa-file-word text-white text-xl"></i>
@@ -1462,8 +1579,25 @@
                                 </span>
                             </div>
                         </div>
+                        <h5 class="font-semibold mb-2 mt-2">آموزش‌های ویدیویی (از آپارات)</h5>
+                        <a href="https://www.aparat.com/v/mRWxM" target="_blank" rel="noopener noreferrer" class="video-link">
+                            <i class="fas fa-video ml-2"></i>
+                            آموزش کامل نصب و فعالسازی آفیس 2016
+                        </a>
+                        <a href="https://www.aparat.com/v/D0qhG" target="_blank" rel="noopener noreferrer" class="video-link">
+                            <i class="fas fa-video ml-2"></i>
+                            آموزش صفر تا صد ورد Word
+                        </a>
+                        <a href="https://www.aparat.com/v/YrKsL" target="_blank" rel="noopener noreferrer" class="video-link">
+                            <i class="fas fa-video ml-2"></i>
+                            آموزش مقدماتی اکسل صفر تا صد
+                        </a>
+                        <a href="https://www.aparat.com/v/W8mdq" target="_blank" rel="noopener noreferrer" class="video-link">
+                            <i class="fas fa-video ml-2"></i>
+                            آموزش صفر تا صد پاورپوینت
+                        </a>
                     </a>
-                    <a href="https://www.adobe.com/products/photoshop/free-trial-download.html" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-6 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
+                    <a href="https://www.adobe.com/products/photoshop/free-trial-download.html" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-4 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="fab fa-adobe text-white text-xl"></i>
@@ -1476,8 +1610,13 @@
                                 </span>
                             </div>
                         </div>
+                        <h5 class="font-semibold mb-2 mt-2">آموزش‌های ویدیویی (از آپارات)</h5>
+                        <a href="https://www.aparat.com/v/QAya1" target="_blank" rel="noopener noreferrer" class="video-link">
+                            <i class="fas fa-video ml-2"></i>
+                            آموزش فتوشاپ از صفر تا صد
+                        </a>
                     </a>
-                    <a href="https://www.adobe.com/products/illustrator/free-trial-download.html" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-6 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
+                    <a href="https://www.adobe.com/products/illustrator/free-trial-download.html" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-4 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="fab fa-adobe text-white text-xl"></i>
@@ -1490,8 +1629,13 @@
                                 </span>
                             </div>
                         </div>
+                        <h5 class="font-semibold mb-2 mt-2">آموزش‌های ویدیویی (از آپارات)</h5>
+                        <a href="https://www.aparat.com/v/IJtKm" target="_blank" rel="noopener noreferrer" class="video-link">
+                            <i class="fas fa-video ml-2"></i>
+                            آموزش صفر تا صد ایلوستریتور
+                        </a>
                     </a>
-                    <a href="https://www.adobe.com/products/animate/free-trial-download.html" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-6 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
+                    <a href="https://www.adobe.com/products/animate/free-trial-download.html" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-4 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="fab fa-adobe text-white text-xl"></i>
@@ -1504,8 +1648,13 @@
                                 </span>
                             </div>
                         </div>
+                        <h5 class="font-semibold mb-2 mt-2">آموزش‌های ویدیویی (از آپارات)</h5>
+                        <a href="https://www.aparat.com/v/b7131zy" target="_blank" rel="noopener noreferrer" class="video-link">
+                            <i class="fas fa-video ml-2"></i>
+                            آموزش ادوبی انیمیت - قسمت ۱ - شروع به کار با نرم افزار
+                        </a>
                     </a>
-                    <a href="https://visualstudio.microsoft.com/downloads/" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-6 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
+                    <a href="https://visualstudio.microsoft.com/downloads/" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-4 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="fas fa-code text-white text-xl"></i>
@@ -1518,15 +1667,20 @@
                                 </span>
                             </div>
                         </div>
+                        <h5 class="font-semibold mb-2 mt-2">آموزش‌های ویدیویی (از آپارات)</h5>
+                        <a href="https://www.aparat.com/v/RXZ4Y" target="_blank" rel="noopener noreferrer" class="video-link">
+                            <i class="fas fa-video ml-2"></i>
+                            فیلم آموزش نصب ویژوال استودیو نسخه 2017 به صورت کامل
+                        </a>
                     </a>
                 </div>
             </div>
 
             <!-- نرم‌افزارهای پایه ۱۱ -->
-            <div class="mb-12">
-                <h3 class="text-2xl font-bold mb-8 text-accent">نرم‌افزارهای پایه ۱۱</h3>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <a href="https://www.adobe.com/products/dreamweaver/free-trial-download.html" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-6 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
+            <div class="mb-4">
+                <h3 class="text-2xl font-bold mb-4 text-accent">نرم‌افزارهای پایه ۱۱</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+                    <a href="https://www.adobe.com/products/dreamweaver/free-trial-download.html" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-4 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="fab fa-adobe text-white text-xl"></i>
@@ -1539,8 +1693,13 @@
                                 </span>
                             </div>
                         </div>
+                        <h5 class="font-semibold mb-2 mt-2">آموزش‌های ویدیویی (از آپارات)</h5>
+                        <a href="https://www.aparat.com/v/rfcKL" target="_blank" rel="noopener noreferrer" class="video-link">
+                            <i class="fas fa-video ml-2"></i>
+                            اموزش نرم افزار دریم ویور(Dreamweaver)
+                        </a>
                     </a>
-                    <a href="https://www.wampserver.com/en/" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-6 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
+                    <a href="https://www.wampserver.com/en/" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-4 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="fas fa-server text-white text-xl"></i>
@@ -1553,8 +1712,13 @@
                                 </span>
                             </div>
                         </div>
+                        <h5 class="font-semibold mb-2 mt-2">آموزش‌های ویدیویی (از آپارات)</h5>
+                        <a href="https://www.aparat.com/v/TYWjr" target="_blank" rel="noopener noreferrer" class="video-link">
+                            <i class="fas fa-video ml-2"></i>
+                            آموزش نصب wampserver ومپ سرور
+                        </a>
                     </a>
-                    <a href="https://www.apachefriends.org/download.html" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-6 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
+                    <a href="https://www.apachefriends.org/download.html" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-4 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="fas fa-database text-white text-xl"></i>
@@ -1567,8 +1731,13 @@
                                 </span>
                             </div>
                         </div>
+                        <h5 class="font-semibold mb-2 mt-2">آموزش‌های ویدیویی (از آپارات)</h5>
+                        <a href="https://www.aparat.com/v/HpGni" target="_blank" rel="noopener noreferrer" class="video-link">
+                            <i class="fas fa-video ml-2"></i>
+                            آموزش نصب و راه اندازی زمپ xampp
+                        </a>
                     </a>
-                    <a href="https://wordpress.org/download/" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-6 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
+                    <a href="https://wordpress.org/download/" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-4 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="fab fa-wordpress text-white text-xl"></i>
@@ -1581,15 +1750,20 @@
                                 </span>
                             </div>
                         </div>
+                        <h5 class="font-semibold mb-2 mt-2">آموزش‌های ویدیویی (از آپارات)</h5>
+                        <a href="https://www.aparat.com/v/T8Fik" target="_blank" rel="noopener noreferrer" class="video-link">
+                            <i class="fas fa-video ml-2"></i>
+                            آموزش نصب وردپرس روی ویندوز
+                        </a>
                     </a>
                 </div>
             </div>
 
             <!-- نرم‌افزارهای پایه ۱۲ -->
-            <div class="mb-12">
-                <h3 class="text-2xl font-bold mb-8 text-accent">نرم‌افزارهای پایه ۱۲</h3>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <a href="https://www.adobe.com/products/premiere/free-trial-download.html" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-6 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
+            <div class="mb-4">
+                <h3 class="text-2xl font-bold mb-4 text-accent">نرم‌افزارهای پایه ۱۲</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+                    <a href="https://www.adobe.com/products/premiere/free-trial-download.html" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-4 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="fab fa-adobe text-white text-xl"></i>
@@ -1602,8 +1776,13 @@
                                 </span>
                             </div>
                         </div>
+                        <h5 class="font-semibold mb-2 mt-2">آموزش‌های ویدیویی (از آپارات)</h5>
+                        <a href="https://www.aparat.com/v/a87xd69" target="_blank" rel="noopener noreferrer" class="video-link">
+                            <i class="fas fa-video ml-2"></i>
+                            آموزش کامل پریمیر پرو در 59 دقیقه (صفر تا صد در یک ویدئو)
+                        </a>
                     </a>
-                    <a href="https://www.adobe.com/products/audition/free-trial-download.html" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-6 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
+                    <a href="https://www.adobe.com/products/audition/free-trial-download.html" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-4 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="fab fa-adobe text-white text-xl"></i>
@@ -1616,8 +1795,13 @@
                                 </span>
                             </div>
                         </div>
+                        <h5 class="font-semibold mb-2 mt-2">آموزش‌های ویدیویی (از آپارات)</h5>
+                        <a href="https://www.aparat.com/v/lYgrz" target="_blank" rel="noopener noreferrer" class="video-link">
+                            <i class="fas fa-video ml-2"></i>
+                            صفر تا صد آموزش آدیشن Adobe Audition CC
+                        </a>
                     </a>
-                    <a href="https://www.adobe.com/products/captivate/download-trial/get-started.html" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-6 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
+                    <a href="https://www.adobe.com/products/captivate/download-trial/get-started.html" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-4 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="fab fa-adobe text-white text-xl"></i>
@@ -1630,8 +1814,13 @@
                                 </span>
                             </div>
                         </div>
+                        <h5 class="font-semibold mb-2 mt-2">آموزش‌های ویدیویی (از آپارات)</h5>
+                        <a href="https://www.aparat.com/v/GN7mV" target="_blank" rel="noopener noreferrer" class="video-link">
+                            <i class="fas fa-video ml-2"></i>
+                            صفر تا صد آموزش کپتیویت Adobe Captivate
+                        </a>
                     </a>
-                    <a href="https://helpx.adobe.com/download-install/kb/photoshop-elements-downloads.html" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-6 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
+                    <a href="https://helpx.adobe.com/download-install/kb/photoshop-elements-downloads.html" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-4 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="fab fa-adobe text-white text-xl"></i>
@@ -1644,15 +1833,20 @@
                                 </span>
                             </div>
                         </div>
+                        <h5 class="font-semibold mb-2 mt-2">آموزش‌های ویدیویی (از آپارات)</h5>
+                        <a href="https://www.aparat.com/v/QAya1" target="_blank" rel="noopener noreferrer" class="video-link">
+                            <i class="fas fa-video ml-2"></i>
+                            آموزش فتوشاپ از صفر تا صد (مشابه برای Elements)
+                        </a>
                     </a>
                 </div>
             </div>
 
             <!-- جایگزین‌های رایگان -->
             <div>
-                <h3 class="text-2xl font-bold mb-8 text-green-500">جایگزین‌های رایگان دائمی</h3>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <a href="https://www.gimp.org/downloads/" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-6 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
+                <h3 class="text-2xl font-bold mb-4 text-green-500">جایگزین‌های رایگان دائمی</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <a href="https://www.gimp.org/downloads/" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-4 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="fas fa-image text-white text-xl"></i>
@@ -1666,7 +1860,7 @@
                             </div>
                         </div>
                     </a>
-                    <a href="https://inkscape.org/release/" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-6 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
+                    <a href="https://inkscape.org/release/" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-4 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="fas fa-vector-square text-white text-xl"></i>
@@ -1680,7 +1874,7 @@
                             </div>
                         </div>
                     </a>
-                    <a href="https://www.blackmagicdesign.com/products/davinciresolve" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-6 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
+                    <a href="https://www.blackmagicdesign.com/products/davinciresolve" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-4 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="fas fa-video text-white text-xl"></i>
@@ -1694,7 +1888,7 @@
                             </div>
                         </div>
                     </a>
-                    <a href="https://www.audacityteam.org/download/" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-6 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
+                    <a href="https://www.audacityteam.org/download/" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-4 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="fas fa-microphone text-white text-xl"></i>
@@ -1708,7 +1902,7 @@
                             </div>
                         </div>
                     </a>
-                    <a href="https://code.visualstudio.com/download/" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-6 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
+                    <a href="https://code.visualstudio.com/download/" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-4 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="fas fa-code text-white text-xl"></i>
@@ -1722,7 +1916,7 @@
                             </div>
                         </div>
                     </a>
-                    <a href="https://www.canva.com/" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-6 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
+                    <a href="https://www.canva.com/" target="_blank" rel="noopener noreferrer" class="glass-card bg-white/10 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20 rounded-xl p-4 hover:scale-105 hover:bg-white/20 dark:hover:bg-slate-700/50 transition-all duration-300 group">
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <i class="fas fa-palette text-white text-xl"></i>
@@ -1741,771 +1935,56 @@
         </div>
     </section>
 
-    <!-- AI Section -->
-    <section id="ai" class="py-20 px-4">
+    <!-- AI Button Section -->
+    <section id="ai-button-section" class="py-12 px-4">
         <div class="container mx-auto">
-            <div class="ai-section-bg">
-                <h2 class="text-4xl font-bold text-center mb-16" style="color: var(--primary-blue);">
+            <div class="ai-button-section">
+                <h2 class="text-4xl font-bold text-center mb-8" style="color: var(--primary-blue);">
                     <i class="fas fa-robot ml-3 text-5xl" style="color: var(--accent-green);"></i>
                     هوش مصنوعی‌های مفید
                 </h2>
-                
-                <!-- Image Generation Section -->
-                <div class="mb-16">
-                    <h3 class="text-3xl font-bold mb-10 text-center" style="color: var(--accent-green);">
-                        <i class="fas fa-image ml-2"></i>
-                        عکس‌سازی (Image Generation)
-                    </h3>
-                    
-                    <div class="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
-                        <!-- General AI Tools -->
-                        <div class="ai-glass-card">
-                            <h4 class="text-xl font-bold mb-6 flex items-center" style="color: var(--primary-blue);">
-                                <i class="fas fa-brain ml-2" style="color: var(--accent-green);"></i>
-                                ابزارهای عمومی
-                            </h4>
-                            <div class="space-y-3">
-                                <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Gemini Nano</div>
-                                            <div class="text-sm opacity-70">مدل سبک گوگل برای متن، تصویر و خلاصه آفلاین روی گوشی</div>
-                                        </div>
-                                        <i class="fab fa-google text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                                <a href="https://krea.ai/apps/edit/nano-banana-edit" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Nano Banana (Krea.ai)</div>
-                                            <div class="text-sm opacity-70">ویرایش تصویر با Gemini 2.5 Flash (حذف اشیا، تغییر بک‌گراند)</div>
-                                        </div>
-                                        <i class="fas fa-edit text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Professional Tools -->
-                        <div class="ai-glass-card">
-                            <h4 class="text-xl font-bold mb-6 flex items-center" style="color: var(--primary-blue);">
-                                <i class="fas fa-palette ml-2" style="color: var(--accent-green);"></i>
-                                ابزارهای حرفه‌ای
-                            </h4>
-                            <div class="space-y-3">
-                                <a href="https://midjourney.com" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Midjourney</div>
-                                            <div class="text-sm opacity-70">تولید تصاویر هنری با کیفیت بالا از متن</div>
-                                        </div>
-                                        <i class="fas fa-paint-brush text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                                <a href="https://openai.com/dall-e" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">DALL-E 3</div>
-                                            <div class="text-sm opacity-70">ژنراتور OpenAI برای تصاویر واقع‌گرایانه</div>
-                                        </div>
-                                        <i class="fas fa-magic text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                                <a href="https://stability.ai" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Stable Diffusion</div>
-                                            <div class="text-sm opacity-70">مدل متن‌باز برای تولید و ویرایش تصاویر</div>
-                                        </div>
-                                        <i class="fas fa-code-branch text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                                <a href="https://firefly.adobe.com" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Adobe Firefly</div>
-                                            <div class="text-sm opacity-70">ادغام با فتوشاپ برای ویرایش حرفه‌ای</div>
-                                        </div>
-                                        <i class="fab fa-adobe text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Specialized Tools -->
-                        <div class="ai-glass-card">
-                            <h4 class="text-xl font-bold mb-6 flex items-center" style="color: var(--primary-blue);">
-                                <i class="fas fa-tools ml-2" style="color: var(--accent-green);"></i>
-                                ابزارهای تخصصی
-                            </h4>
-                            <div class="space-y-3">
-                                <a href="https://aitestkitchen.withgoogle.com" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">ImageFX (Google)</div>
-                                            <div class="text-sm opacity-70">ابزار گوگل برای تصاویر واقعی و سریع</div>
-                                        </div>
-                                        <i class="fab fa-google text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                                <a href="https://ideogram.ai" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Ideogram</div>
-                                            <div class="text-sm opacity-70">تولید لوگو و پوستر با تمرکز روی متن</div>
-                                        </div>
-                                        <i class="fas fa-font text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                                <a href="https://leonardo.ai" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">LeonardoAI</div>
-                                            <div class="text-sm opacity-70">تولید هنر سفارشی با مدل‌های متنوع</div>
-                                        </div>
-                                        <i class="fas fa-user-astronaut text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                                <a href="https://reve.art" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Reve</div>
-                                            <div class="text-sm opacity-70">ژنراتور سریع با ویرایش پیشرفته</div>
-                                        </div>
-                                        <i class="fas fa-bolt text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                                <a href="https://shutterstock.com/ai-image-generator" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Shutterstock AI</div>
-                                            <div class="text-sm opacity-70">تصاویر استوک با AI، ادغام حرفه‌ای</div>
-                                        </div>
-                                        <i class="fas fa-camera text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                                <a href="https://grok.com" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Grok Image Gen</div>
-                                            <div class="text-sm opacity-70">تولید تصاویر از متن با جستجوی واقعی‌زمان (xAI)</div>
-                                        </div>
-                                        <i class="fas fa-search text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Challenge Box for Image Generation -->
-                    <div class="ai-challenge-box">
-                        <div class="relative z-10">
-                            <h4 class="text-xl font-bold mb-3 flex items-center">
-                                <i class="fas fa-trophy ml-2"></i>
-                                چالش آموزشی هفتگی
-                            </h4>
-                            <p class="text-lg">
-                                طراحی یک لوگو آموزشی با استفاده از Ideogram و به اشتراک‌گذاری نتیجه در گروه.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Code Generation Section -->
-                <div class="mb-16">
-                    <h3 class="text-3xl font-bold mb-10 text-center" style="color: var(--accent-green);">
-                        <i class="fas fa-code ml-2"></i>
-                        کدسازی (Code Generation)
-                    </h3>
-                    
-                    <div class="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
-                        <!-- IDE & Editors -->
-                        <div class="ai-glass-card">
-                            <h4 class="text-xl font-bold mb-6 flex items-center" style="color: var(--primary-blue);">
-                                <i class="fas fa-laptop-code ml-2" style="color: var(--accent-green);"></i>
-                                محیط‌های توسعه
-                            </h4>
-                            <div class="space-y-3">
-                                <a href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">GitHub Copilot</div>
-                                            <div class="text-sm opacity-70">پیشنهاد کد واقعی‌زمان در VS Code</div>
-                                        </div>
-                                        <i class="fab fa-github text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                                <a href="https://cursor.sh" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Cursor</div>
-                                            <div class="text-sm opacity-70">IDE با AI برای نوشتن و ویرایش کد سریع</div>
-                                        </div>
-                                        <i class="fas fa-mouse-pointer text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                                <a href="https://windsurf.com" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Windsurf</div>
-                                            <div class="text-sm opacity-70">IDE بومی AI برای توسعه سریع</div>
-                                        </div>
-                                        <i class="fas fa-wind text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                                <a href="https://zed.dev" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Zed</div>
-                                            <div class="text-sm opacity-70">ویرایشگر سریع با ادغام AI برای تیم‌ها</div>
-                                        </div>
-                                        <i class="fas fa-bolt text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- AI Assistants -->
-                        <div class="ai-glass-card">
-                            <h4 class="text-xl font-bold mb-6 flex items-center" style="color: var(--primary-blue);">
-                                <i class="fas fa-robot ml-2" style="color: var(--accent-green);"></i>
-                                دستیارهای هوشمند
-                            </h4>
-                            <div class="space-y-3">
-                                <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Claude Code</div>
-                                            <div class="text-sm opacity-70">استدلال پیچیده برای پروژه‌های بزرگ کدنویسی</div>
-                                        </div>
-                                        <i class="fas fa-brain text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                                <a href="https://tabnine.com" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Tabnine</div>
-                                            <div class="text-sm opacity-70">تکمیل کد امن با پشتیبانی ۳۰+ زبان</div>
-                                        </div>
-                                        <i class="fas fa-shield-alt text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                                <a href="https://aws.amazon.com/q/developer" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Amazon Q Developer</div>
-                                            <div class="text-sm opacity-70">ابزار AWS برای دیباگ و کد ابری</div>
-                                        </div>
-                                        <i class="fab fa-aws text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                                <a href="https://aider.chat" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Aider</div>
-                                            <div class="text-sm opacity-70">ابزار خط‌فرمانی برای ویرایش کد با AI</div>
-                                        </div>
-                                        <i class="fas fa-terminal text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Development Platforms -->
-                        <div class="ai-glass-card">
-                            <h4 class="text-xl font-bold mb-6 flex items-center" style="color: var(--primary-blue);">
-                                <i class="fas fa-cloud ml-2" style="color: var(--accent-green);"></i>
-                                پلتفرم‌های توسعه
-                            </h4>
-                            <div class="space-y-3">
-                                <a href="https://bolt.new" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Bolt</div>
-                                            <div class="text-sm opacity-70">تولید اپ کامل از پرامپت‌های ساده</div>
-                                        </div>
-                                        <i class="fas fa-rocket text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                                <a href="https://replit.com" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Replit</div>
-                                            <div class="text-sm opacity-70">محیط آنلاین کدنویسی با AI برای مبتدیان</div>
-                                        </div>
-                                        <i class="fas fa-play text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Challenge Box for Code Generation -->
-                    <div class="ai-challenge-box">
-                        <div class="relative z-10">
-                            <h4 class="text-xl font-bold mb-3 flex items-center">
-                                <i class="fas fa-trophy ml-2"></i>
-                                چالش آموزشی هفتگی
-                            </h4>
-                            <p class="text-lg">
-                                نوشتن یک اسکریپت ساده با GitHub Copilot برای مدیریت داده‌ها و آزمایش آن.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Content Generation Section -->
-                <div class="mb-16">
-                    <h3 class="text-3xl font-bold mb-10 text-center" style="color: var(--accent-green);">
-                        <i class="fas fa-pen-fancy ml-2"></i>
-                        تولید محتوا (Content Generation)
-                    </h3>
-                    
-                    <div class="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
-                        <!-- Marketing & SEO Tools -->
-                        <div class="ai-glass-card">
-                            <h4 class="text-xl font-bold mb-6 flex items-center" style="color: var(--primary-blue);">
-                                <i class="fas fa-chart-line ml-2" style="color: var(--accent-green);"></i>
-                                بازاریابی و SEO
-                            </h4>
-                            <div class="space-y-3">
-                                <a href="https://jasper.ai" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Jasper</div>
-                                            <div class="text-sm opacity-70">محتوای بازاریابی و بلاگ با SEO</div>
-                                        </div>
-                                        <i class="fas fa-magic text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                                <a href="https://copy.ai" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Copy.ai</div>
-                                            <div class="text-sm opacity-70">کپی، ایمیل و پست‌های اجتماعی سریع</div>
-                                        </div>
-                                        <i class="fas fa-copy text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                                <a href="https://writesonic.com" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Writesonic</div>
-                                            <div class="text-sm opacity-70">ابزار SEO برای محتوای بلند</div>
-                                        </div>
-                                        <i class="fas fa-search text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                                <a href="https://surferseo.com" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Surfer SEO</div>
-                                            <div class="text-sm opacity-70">بهینه‌سازی محتوا برای گوگل</div>
-                                        </div>
-                                        <i class="fab fa-google text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Writing & Blog Tools -->
-                        <div class="ai-glass-card">
-                            <h4 class="text-xl font-bold mb-6 flex items-center" style="color: var(--primary-blue);">
-                                <i class="fas fa-edit ml-2" style="color: var(--accent-green);"></i>
-                                نوشتن و بلاگ
-                            </h4>
-                            <div class="space-y-3">
-                                <a href="https://rytr.me" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Rytr</div>
-                                            <div class="text-sm opacity-70">محتوای ساختاریافته با هدایت AI</div>
-                                        </div>
-                                        <i class="fas fa-pen text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                                <a href="https://gravitywrite.com" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">GravityWrite</div>
-                                            <div class="text-sm opacity-70">بلاگ و لندینگ پیج با یک‌کلیک</div>
-                                        </div>
-                                        <i class="fas fa-feather-alt text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Video & Multimedia -->
-                        <div class="ai-glass-card">
-                            <h4 class="text-xl font-bold mb-6 flex items-center" style="color: var(--primary-blue);">
-                                <i class="fas fa-video ml-2" style="color: var(--accent-green);"></i>
-                                ویدیو و چندرسانه‌ای
-                            </h4>
-                            <div class="space-y-3">
-                                <a href="https://canva.com/magic-studio" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Canva Magic Studio</div>
-                                            <div class="text-sm opacity-70">طراحی گرافیکی، ویدیو و متن با AI – عالی برای مبتدیان</div>
-                                        </div>
-                                        <i class="fas fa-palette text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                                <a href="https://descript.com" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Descript</div>
-                                            <div class="text-sm opacity-70">ویرایش ویدیو/پادکست با متن و تولید صدا</div>
-                                        </div>
-                                        <i class="fas fa-microphone text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                                <a href="https://synthesia.io" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Synthesia</div>
-                                            <div class="text-sm opacity-70">ویدیوهای آموزشی با آواتارهای AI</div>
-                                        </div>
-                                        <i class="fas fa-user-circle text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                                <a href="https://lumen5.com" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Lumen5</div>
-                                            <div class="text-sm opacity-70">تبدیل متن به ویدیوهای اجتماعی</div>
-                                        </div>
-                                        <i class="fas fa-film text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Challenge Box for Content Generation -->
-                    <div class="ai-challenge-box">
-                        <div class="relative z-10">
-                            <h4 class="text-xl font-bold mb-3 flex items-center">
-                                <i class="fas fa-trophy ml-2"></i>
-                                چالش آموزشی هفتگی
-                            </h4>
-                            <p class="text-lg">
-                                ایجاد یک پست آموزشی با Jasper و بهینه‌سازی آن برای جستجو.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Language Learning Section -->
-                <div class="mb-16">
-                    <h3 class="text-3xl font-bold mb-10 text-center" style="color: var(--accent-green);">
-                        <i class="fas fa-language ml-2"></i>
-                        یادگیری زبان (Language Learning)
-                    </h3>
-                    
-                    <div class="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
-                        <!-- Conversation Practice -->
-                        <div class="ai-glass-card">
-                            <h4 class="text-xl font-bold mb-6 flex items-center" style="color: var(--primary-blue);">
-                                <i class="fas fa-comments ml-2" style="color: var(--accent-green);"></i>
-                                تمرین مکالمه
-                            </h4>
-                            <div class="space-y-3">
-                                <a href="https://languatalk.com" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Langua</div>
-                                            <div class="text-sm opacity-70">معلم AI برای مکالمه و فیدبک واقعی‌زمان</div>
-                                        </div>
-                                        <i class="fas fa-chalkboard-teacher text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                                <a href="https://univerbal.app" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Univerbal</div>
-                                            <div class="text-sm opacity-70">اپ مکالمه با AI برای انگلیسی</div>
-                                        </div>
-                                        <i class="fas fa-mobile-alt text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                                <a href="https://gliglish.com" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Gliglish</div>
-                                            <div class="text-sm opacity-70">تمرین speaking در سناریوهای واقعی</div>
-                                        </div>
-                                        <i class="fas fa-microphone-alt text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                                <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">ChatGPT Voice</div>
-                                            <div class="text-sm opacity-70">تمرین مکالمه با GPT-4o، رایگان</div>
-                                        </div>
-                                        <i class="fas fa-robot text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Pronunciation & Grammar -->
-                        <div class="ai-glass-card">
-                            <h4 class="text-xl font-bold mb-6 flex items-center" style="color: var(--primary-blue);">
-                                <i class="fas fa-volume-up ml-2" style="color: var(--accent-green);"></i>
-                                تلفظ و گرامر
-                            </h4>
-                            <div class="space-y-3">
-                                <a href="https://talktutor.ai" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">TalkTutor AI</div>
-                                            <div class="text-sm opacity-70">فیدبک صوتی برای تلفظ و گرامر</div>
-                                        </div>
-                                        <i class="fas fa-headphones text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                                <a href="https://elsaspeak.com" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Elsa Speak</div>
-                                            <div class="text-sm opacity-70">تمرکز روی تلفظ با AI</div>
-                                        </div>
-                                        <i class="fas fa-bullhorn text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Learning Platforms -->
-                        <div class="ai-glass-card">
-                            <h4 class="text-xl font-bold mb-6 flex items-center" style="color: var(--primary-blue);">
-                                <i class="fas fa-graduation-cap ml-2" style="color: var(--accent-green);"></i>
-                                پلتفرم‌های یادگیری
-                            </h4>
-                            <div class="space-y-3">
-                                <a href="https://duolingo.com" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Duolingo</div>
-                                            <div class="text-sm opacity-70">درس‌های بازی‌وار با AI (۱۴۸ دوره)</div>
-                                        </div>
-                                        <i class="fas fa-gamepad text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                                <a href="https://justlearn.com" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Just Learn</div>
-                                            <div class="text-sm opacity-70">پلتفرم ۲۴/۷ برای ۱۵+ زبان، شامل انگلیسی</div>
-                                        </div>
-                                        <i class="fas fa-clock text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                                <a href="https://babbel.com" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Babbel</div>
-                                            <div class="text-sm opacity-70">درس‌های تعاملی برای مبتدیان</div>
-                                        </div>
-                                        <i class="fas fa-book-open text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                                <a href="https://memrise.com" target="_blank" rel="noopener noreferrer" class="ai-tool-link">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <div class="font-semibold">Memrise</div>
-                                            <div class="text-sm opacity-70">فلش‌کارت‌های AI برای واژگان</div>
-                                        </div>
-                                        <i class="fas fa-brain text-xl opacity-60"></i>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Challenge Box for Language Learning -->
-                    <div class="ai-challenge-box">
-                        <div class="relative z-10">
-                            <h4 class="text-xl font-bold mb-3 flex items-center">
-                                <i class="fas fa-trophy ml-2"></i>
-                                چالش آموزشی هفتگی
-                            </h4>
-                            <p class="text-lg">
-                                تمرین مکالمه روزانه با Duolingo و ثبت پیشرفت.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <a href="ai.html" class="ai-button">
+                    <i class="fas fa-magic"></i>
+                   آشنایی با هوش مصنوعی‌های مفید
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Educational Articles Section -->
-    <section id="articles" class="py-20 px-4">
+    <!-- Reports Section (Compacted) -->
+    <section id="reports" class="py-8 px-4" style="background-color: var(--secondary-gray);">
         <div class="container mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-16" style="color: var(--primary-blue);">
-                <i class="fas fa-newspaper ml-3" style="color: var(--accent-green);"></i>
-                مطالب آموزشی
-            </h2>
-            
-            <div class="grid lg:grid-cols-3 gap-8">
-                <!-- Article 1: Programming Guide -->
-                <div class="glass-card p-8 hover:scale-105 transition-transform duration-300">
-                    <div class="text-center mb-6">
-                        <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4" 
-                             style="background: linear-gradient(135deg, var(--primary-blue), var(--accent-green));">
-                            <i class="fas fa-code text-white text-3xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4" style="color: var(--primary-blue);">چگونه برنامه‌نویس شوید</h3>
-                    </div>
-                    
-                    <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                        راهنمایی گام‌به‌گام برای ورود به دنیای برنامه‌نویسی، از انتخاب زبان تا پروژه‌های عملی. این مسیر حرفه‌ای و مدرن، با تمرکز بر ابزارهای ۲۰۲۵ مانند Python و AI-assisted coding، شما را به یک توسعه‌دهنده ماهر تبدیل می‌کند.
-                    </p>
-                    
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="flex items-center text-sm" style="color: var(--accent-green);">
-                            <i class="fas fa-eye ml-2"></i>
-                            <span id="article1-views">1,247</span>
-                            <span class="mr-1">بازدید</span>
-                        </div>
-                        <div class="flex items-center text-sm opacity-70">
-                            <i class="fas fa-calendar ml-2"></i>
-                            <span>۱۵ دی ۱۴۰۳</span>
-                        </div>
-                    </div>
-                    
-                    <div class="ai-challenge-box text-center">
-                        <div class="relative z-10">
-                            <h4 class="text-lg font-bold mb-2 flex items-center justify-center">
-                                <i class="fas fa-trophy ml-2"></i>
-                                چالش آموزشی هفتگی
-                            </h4>
-                            <p class="text-sm">
-                                نوشتن اولین کد ساده و به اشتراک‌گذاری
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Article 2: Content Creation Tools -->
-                <div class="glass-card p-8 hover:scale-105 transition-transform duration-300">
-                    <div class="text-center mb-6">
-                        <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4" 
-                             style="background: linear-gradient(135deg, var(--accent-green), var(--primary-blue));">
-                            <i class="fas fa-tools text-white text-3xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4" style="color: var(--primary-blue);">ابزارهای ضروری تولید محتوا</h3>
-                    </div>
-                    
-                    <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                        بررسی ابزارهای کلیدی مانند Canva، Adobe Suite و AI generators برای ایجاد محتوای آموزشی با کیفیت بالا. این ابزارها به شما کمک می‌کنند تا محتوای حرفه‌ای و جذاب تولید کنید، متناسب با نیازهای آموزشی امروز.
-                    </p>
-                    
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="flex items-center text-sm" style="color: var(--accent-green);">
-                            <i class="fas fa-eye ml-2"></i>
-                            <span id="article2-views">892</span>
-                            <span class="mr-1">بازدید</span>
-                        </div>
-                        <div class="flex items-center text-sm opacity-70">
-                            <i class="fas fa-calendar ml-2"></i>
-                            <span>۱۲ دی ۱۴۰۳</span>
-                        </div>
-                    </div>
-                    
-                    <div class="ai-challenge-box text-center">
-                        <div class="relative z-10">
-                            <h4 class="text-lg font-bold mb-2 flex items-center justify-center">
-                                <i class="fas fa-trophy ml-2"></i>
-                                چالش آموزشی هفتگی
-                            </h4>
-                            <p class="text-sm">
-                                ساخت یک ویدیو آموزشی با Lumen5
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Article 3: Future Tech Careers -->
-                <div class="glass-card p-8 hover:scale-105 transition-transform duration-300">
-                    <div class="text-center mb-6">
-                        <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4" 
-                             style="background: linear-gradient(135deg, var(--primary-blue), var(--accent-green));">
-                            <i class="fas fa-rocket text-white text-3xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4" style="color: var(--primary-blue);">آینده‌های شغلی در فناوری</h3>
-                    </div>
-                    
-                    <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                        تحلیل فرصت‌های شغلی آینده در زمینه‌های AI، توسعه وب و تولید محتوا. با تمرکز بر روندهای ۲۰۲۵ مانند هوش مصنوعی و دیجیتال مارکتینگ، این مطلب به شما کمک می‌کند تا مسیر شغلی خود را هوشمندانه انتخاب کنید.
-                    </p>
-                    
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="flex items-center text-sm" style="color: var(--accent-green);">
-                            <i class="fas fa-eye ml-2"></i>
-                            <span id="article3-views">1,534</span>
-                            <span class="mr-1">بازدید</span>
-                        </div>
-                        <div class="flex items-center text-sm opacity-70">
-                            <i class="fas fa-calendar ml-2"></i>
-                            <span>۱۰ دی ۱۴۰۳</span>
-                        </div>
-                    </div>
-                    
-                    <div class="ai-challenge-box text-center">
-                        <div class="relative z-10">
-                            <h4 class="text-lg font-bold mb-2 flex items-center justify-center">
-                                <i class="fas fa-trophy ml-2"></i>
-                                چالش آموزشی هفتگی
-                            </h4>
-                            <p class="text-sm">
-                                تحقیق درباره یک شغل آینده و گزارش آن
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Reports Section -->
-    <section id="reports" class="py-20 px-4" style="background-color: var(--secondary-gray);">
-        <div class="container mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-16" style="color: var(--primary-blue);">
+            <h2 class="text-4xl font-bold text-center mb-8" style="color: var(--primary-blue);">
                 <i class="fas fa-chart-bar ml-3" style="color: var(--accent-green);"></i>
                 گزارش عملکرد سالانه شهرستان زرین‌دشت
             </h2>
             
-            <div class="grid lg:grid-cols-2 gap-8">
+            <div class="grid lg:grid-cols-2 gap-4">
                 <!-- Report 1: 1402-1403 -->
-                <div class="glass-card p-8">
-                    <div class="flex items-center mb-6">
-                        <div class="w-16 h-16 rounded-full flex items-center justify-center ml-4" 
+                <div class="glass-card p-2">
+                    <div class="flex items-center mb-2">
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center ml-3" 
                              style="background: linear-gradient(135deg, var(--primary-blue), var(--accent-green));">
-                            <i class="fas fa-file-alt text-white text-2xl"></i>
+                            <i class="fas fa-file-alt text-white text-xl"></i>
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold" style="color: var(--primary-blue);">گزارش عملکرد سال تحصیلی ۱۴۰۲-۱۴۰۳</h3>
-                            <p class="text-sm opacity-70 mt-2">گزارش جامع فعالیت‌های آموزشی و پرورشی</p>
+                            <h3 class="text-xl font-bold" style="color: var(--primary-blue);">گزارش عملکرد سال تحصیلی ۱۴۰۲-۱۴۰۳</h3>
+                            <p class="text-sm opacity-70 mt-1">گزارش جامع فعالیت‌های آموزشی و پرورشی</p>
                         </div>
                     </div>
                     
-                    <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                    <p class="text-gray-600 dark:text-gray-300 mb-2 leading-relaxed text-sm">
                         گزارش جامع فعالیت‌های آموزشی و پرورشی هنرستان‌های کامپیوتر شهرستان زرین‌دشت شامل آمار دانش‌آموزان، نتایج آموزشی، پروژه‌های انجام شده و دستاوردهای سال تحصیلی ۱۴۰۲-۱۴۰۳.
                     </p>
                     
                     <div class="flex items-center justify-between">
-                        <div class="flex items-center text-sm" style="color: var(--accent-green);">
+                        <div class="flex items-center text-xs" style="color: var(--accent-green);">
                             <i class="fas fa-download ml-2"></i>
                             <span>فرمت PDF</span>
                         </div>
                         <a href="https://drive.google.com/file/d/1kgTuGpCg3mjpKZlVtE-HqPl0UCj3q0CH/view?usp=drive_link" 
                            target="_blank" rel="noopener noreferrer" 
-                           class="btn-primary flex items-center">
+                           class="btn-primary flex items-center text-sm px-4 py-2">
                             <i class="fas fa-external-link-alt ml-2"></i>
                             دانلود گزارش
                         </a>
@@ -2513,28 +1992,28 @@
                 </div>
 
                 <!-- Report 2: 1403-1404 -->
-                <div class="glass-card p-8">
-                    <div class="flex items-center mb-6">
-                        <div class="w-16 h-16 rounded-full flex items-center justify-center ml-4" 
+                <div class="glass-card p-2">
+                    <div class="flex items-center mb-2">
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center ml-3" 
                              style="background: linear-gradient(135deg, var(--accent-green), var(--primary-blue));">
-                            <i class="fas fa-file-alt text-white text-2xl"></i>
+                            <i class="fas fa-file-alt text-white text-xl"></i>
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold" style="color: var(--primary-blue);">گزارش عملکرد سال تحصیلی ۱۴۰۳-۱۴۰۴</h3>
-                            <p class="text-sm opacity-70 mt-2">گزارش جامع فعالیت‌های آموزشی و پرورشی</p>
+                            <h3 class="text-xl font-bold" style="color: var(--primary-blue);">گزارش عملکرد سال تحصیلی ۱۴۰۳-۱۴۰۴</h3>
+                            <p class="text-sm opacity-70 mt-1">گزارش جامع فعالیت‌های آموزشی و پرورشی</p>
                         </div>
                     </div>
                     
-                    <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                    <p class="text-gray-600 dark:text-gray-300 mb-2 leading-relaxed text-sm">
                         گزارش جامع فعالیت‌های آموزشی و پرورشی هنرستان‌های کامپیوتر شهرستان زرین‌دشت برای سال جاری شامل پیشرفت‌های جدید، پروژه‌های نوآورانه و برنامه‌های آتی.
                     </p>
                     
                     <div class="flex items-center justify-between">
-                        <div class="flex items-center text-sm" style="color: var(--accent-green);">
+                        <div class="flex items-center text-xs" style="color: var(--accent-green);">
                             <i class="fas fa-clock ml-2"></i>
                             <span>در حال تکمیل</span>
                         </div>
-                        <button class="btn-secondary opacity-50 cursor-not-allowed flex items-center" disabled>
+                        <button class="btn-secondary opacity-50 cursor-not-allowed flex items-center text-sm px-4 py-2" disabled>
                             <i class="fas fa-hourglass-half ml-2"></i>
                             به‌زودی
                         </button>
@@ -2560,13 +2039,18 @@
                 توسعه دهنده رعنا پرموزه
             </p>
             <p class="text-sm opacity-80">
-                تمامی حقوق محفوظ است © {new Date().getFullYear()}
+                تمامی حقوق محفوظ است © 
             </p>
         </div>
     </footer>
 
     <!-- Chatbot -->
     <div class="chatbot-container">
+        <!-- Notification Bubble -->
+        <div class="chatbot-notification" id="chatbot-notification" onclick="openChatbotWithNotification()">
+            👋 سلام دوست من!<br>من هوش مصنوعی سایت هستم 🤖<br>برای پرسیدن سؤال از من، روی من کلیک کن 💬
+        </div>
+        
         <button class="chatbot-toggle" onclick="toggleChatbot()">
             <i class="fas fa-robot"></i>
         </button>
@@ -2804,6 +2288,35 @@
                 }, 400);
             }
         }
+
+        // Function to open chatbot via notification
+        function openChatbotWithNotification() {
+            hideNotification();
+            toggleChatbot();
+        }
+
+        // Notification Logic
+        function showNotification() {
+            const notification = document.getElementById('chatbot-notification');
+            const lastShown = localStorage.getItem('chatbotNotificationShown');
+            const now = new Date().getTime();
+            const twelveHours = 12 * 60 * 60 * 1000; // 12 hours in milliseconds
+
+            if (!lastShown || (now - parseInt(lastShown)) > twelveHours) {
+                setTimeout(() => {
+                    notification.classList.add('show');
+                    localStorage.setItem('chatbotNotificationShown', now.toString());
+                }, 5000); // 5 seconds after page load
+            }
+        }
+
+        function hideNotification() {
+            const notification = document.getElementById('chatbot-notification');
+            notification.classList.remove('show');
+        }
+
+        // Call showNotification on page load
+        document.addEventListener('DOMContentLoaded', showNotification);
 
         function addMessage(message, isUser = false) {
             const messagesContainer = document.getElementById('chatbot-messages');
@@ -3082,7 +2595,7 @@
             
             // Default intelligent responses
             const defaultResponses = [
-                '🤖 سؤال جالبی پرسیدی! من آریا هستم، دستیار هوشمند فن‌آموز زرین! تقریباً همه چیز رو راجع به فناوری، برنامه‌نویسی، هوش مصنوعی و آینده شغلی می‌دونم!<br><br>🎯 <strong>تخصص‌های من:</strong><br>• ۲ رشته کاردانش (وب + محتوای الکترونیکی)<br>• ۴ هنرستان شهرستان<br>• بیش از ۵۰ ابزار AI<br>• فرصت‌های شغلی و حقوق<br>• منابع آموزشی و کتاب‌ها<br>• مسیرهای حرفه‌ای<br><br>💡 <em>نکته:</em> این سایت توسط <strong>رعنا پرموزه</strong> با پالت رنگی حرفه‌ای ۲۰۲۵ طراحی شده و <strong>خانم فاطمه معتمد</strong> سرگروه ما هستن!<br><br>سؤال خاص‌تری داری؟ بپرس تا جواب کاملی بهت بدم!',
+                '🤖 سؤال جالبی پرسیدی! من آریا هستم، دستیار هوشمند فن‌آموز زرین! تقریباً همه چیز رو راجع به فناوری، برنامه‌نویسی، هوش مصنوعی و آینده شغلی می‌دونم!<br><br>🎯 <strong>تخصص‌های من:</strong><br>• ۲ رشته کاردانش (وب + محتوای الکترونیکی)<br>• ۴ هنرستان شهرستان<br>• ۵۰+ ابزار AI معرفی شده<br>• فرصت‌های شغلی و حقوق<br>• منابع آموزشی و کتاب‌ها<br>• مسیرهای حرفه‌ای<br><br>💡 <em>نکته:</em> این سایت توسط <strong>رعنا پرموزه</strong> با پالت رنگی حرفه‌ای ۲۰۲۵ طراحی شده و <strong>خانم فاطمه معتمد</strong> سرگروه ما هستن!<br><br>سؤال خاص‌تری داری؟ بپرس تا جواب کاملی بهت بدم!',
                 '🌟 خیلی جالبه که این رو پرسیدی! من می‌تونم راجع به هر موضوع فنی، رشته‌های کامپیوتر، ابزارهای AI، فرصت‌های شغلی و حتی آینده فناوری بهت کمک کنم!<br><br>📊 <strong>آمار سایت ما:</strong><br>• ۴ هنرستان فعال<br>• ۲ رشته کاردانش<br>• ۵۰+ ابزار AI معرفی شده<br>• چالش‌های آموزشی هفتگی<br>• منابع کامل و به‌روز<br><br>🎓 <strong>موضوعات پرطرفدار:</strong><br>• برنامه‌نویسی وب (HTML، CSS، JS، PHP)<br>• طراحی گرافیک (Adobe Suite)<br>• هوش مصنوعی (ChatGPT، Midjourney، Copilot)<br>• فریلنسینگ و کسب درآمد<br><br>📞 برای اطلاعات تخصصی‌تر با <strong>خانم فاطمه معتمد</strong> تماس بگیر: ۰۹۳۷۲۵۶۵۹۹۴',
                 '🚀 چه سؤال باحالی! من آریا، دستیار هوشمند این سایت هستم که توسط <strong>رعنا پرموزه</strong> با تکنولوژی‌های مدرن برنامه‌نویسی شدم!<br><br>💻 <strong>قابلیت‌های من:</strong><br>• پاسخ به سوالات فنی و آموزشی<br>• راهنمایی انتخاب رشته<br>• معرفی ابزارهای AI<br>• اطلاعات بازار کار<br>• راهنمایی ثبت نام<br><br>🎨 <strong>ویژگی‌های سایت:</strong><br>• طراحی مدرن با افکت‌های شیشه‌ای<br>• پالت رنگی هماهنگ (آبی عمیق + سبز زمردی)<br>• رسپانسیو و موبایل‌فرندلی<br>• UX/UI بهینه شده<br><br>💬 سؤال دقیق‌تری بپرس تا جواب کاملی بهت بدم!',
                 '💎 عالیه که علاقه‌مند به یادگیری هستی! من همه چیز رو راجع به دنیای فناوری می‌دونم!<br><br>🔥 <strong>موضوعات داغ ۲۰۲۵:</strong><br>• هوش مصنوعی (AI-Assisted Coding)<br>• توسعه وب (React، Vue، Angular)<br>• محتوای الکترونیکی (VR/AR)<br>• Blockchain و NFT<br>• Cloud Computing<br>• Cybersecurity<br><br>💰 <strong>حقوق‌های جذاب:</strong><br>• توسعه‌دهنده وب: ۸-۲۰ میلیون<br>• طراح محتوا: ۶-۱۵ میلیون<br>• متخصص AI: ۱۰-۲۵ میلیون<br>• فریلنسر: ۳-۱۰ میلیون<br><br>🎯 چه موضوع خاصی جذبت کرده؟ بپرس تا کاملاً راهنماییت کنم!'
